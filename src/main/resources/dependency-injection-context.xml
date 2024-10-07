@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.spring.tutorial.container_overview.dependency_injection"/>
+
+    <bean id="beanOne" class="com.spring.tutorial.container_overview.dependency_injection.BeanOne">
+        <!--<constructor-arg index="1" ref="beanThree"/>-->
+        <constructor-arg name="beanThree" ref="beanThree"/>
+        <constructor-arg ref="beanTwo"/>
+    </bean>
+
+    <bean id="beanFour" class="com.spring.tutorial.container_overview.dependency_injection.BeanFour"></bean>
+
+    <bean id="beanTwo" class="com.spring.tutorial.container_overview.dependency_injection.BeanTwo"></bean>
+    <bean id="beanThree" class="com.spring.tutorial.container_overview.dependency_injection.BeanThree"></bean>
+
+    <bean id="beanA" class="com.spring.tutorial.container_overview.dependency_injection.circular_dependency.BeanA"/>
+    <bean id="beanB" class="com.spring.tutorial.container_overview.dependency_injection.circular_dependency.BeanB"/>
+
+    <bean id="parent" abstract="true" class="com.spring.tutorial.container_overview.dependency_injection.abstraction.BeanParent">
+        <property name="adminEmails">
+            <props>
+                <prop key="administrator">administrator@example.com</prop>
+                <prop key="support">support@example.com</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="child" parent="parent" class="com.spring.tutorial.container_overview.dependency_injection.abstraction.BeanChild">
+        <property name="adminEmails">
+            <props merge="true">
+                <prop key="sales">sales@example.com</prop>
+                <prop key="support">support@example.co.uk</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
