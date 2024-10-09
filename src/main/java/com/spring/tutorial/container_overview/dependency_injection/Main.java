@@ -13,7 +13,8 @@ public class Main {
 
         // ApplicationContext applicationContext = new ClassPathXmlApplicationContext("dependency-injection-context.xml");
         // ApplicationContext applicationContext = new ClassPathXmlApplicationContext("depends-on-context.xml");
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("lazy-context.xml");
+        // ApplicationContext applicationContext = new ClassPathXmlApplicationContext("lazy-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean-scopes-context.xml");
         /*
         BeanOne beanOne = applicationContext.getBean(BeanOne.class);
         beanOne.printClassBeans();
@@ -47,7 +48,9 @@ public class Main {
             System.out.println(beanDefinitionName);
         }
         */
-        System.out.println("************");
-        applicationContext.getBean(BeanLazy.class);
+        // System.out.println("************");
+        // applicationContext.getBean(BeanLazy.class);
+
+
     }
 }
