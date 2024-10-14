@@ -1,6 +1,5 @@
 package com.spring.tutorial.bean_post_processor;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
